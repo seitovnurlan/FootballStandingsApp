@@ -9,21 +9,35 @@
 /* Begin PBXBuildFile section */
 		2807E08A2A723A6800E470A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2807E0892A723A6800E470A6 /* AppDelegate.swift */; };
 		2807E08C2A723A6800E470A6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2807E08B2A723A6800E470A6 /* SceneDelegate.swift */; };
-		2807E08E2A723A6800E470A6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2807E08D2A723A6800E470A6 /* ViewController.swift */; };
-		2807E0912A723A6800E470A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2807E08F2A723A6800E470A6 /* Main.storyboard */; };
+		2807E08E2A723A6800E470A6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2807E08D2A723A6800E470A6 /* MainViewController.swift */; };
 		2807E0932A723A6900E470A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2807E0922A723A6900E470A6 /* Assets.xcassets */; };
 		2807E0962A723A6900E470A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2807E0942A723A6900E470A6 /* LaunchScreen.storyboard */; };
+		2807E0A42A723F2200E470A6 /* ListLeagues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2807E0A32A723F2200E470A6 /* ListLeagues.swift */; };
+		2807E0A62A72443800E470A6 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2807E0A52A72443800E470A6 /* MainTabBarController.swift */; };
+		2807E0A92A72528D00E470A6 /* SearchBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2807E0A82A72528D00E470A6 /* SearchBarViewController.swift */; };
+		2807E0AB2A7252E500E470A6 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2807E0AA2A7252E500E470A6 /* AboutUsViewController.swift */; };
+		2843A5E62A7294050009E3D3 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2843A5E52A7294050009E3D3 /* MainViewModel.swift */; };
+		2843A5E92A7296850009E3D3 /* NetworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2843A5E82A7296850009E3D3 /* NetworkLayer.swift */; };
+		2843A5EC2A7296C30009E3D3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2843A5EB2A7296C30009E3D3 /* Constants.swift */; };
+		2843A5EE2A72ADBE0009E3D3 /* CustomTabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2843A5ED2A72ADBE0009E3D3 /* CustomTabCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2807E0862A723A6800E470A6 /* FootballStandingsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FootballStandingsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2807E0892A723A6800E470A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2807E08B2A723A6800E470A6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2807E08D2A723A6800E470A6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		2807E0902A723A6800E470A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2807E08D2A723A6800E470A6 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		2807E0922A723A6900E470A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2807E0952A723A6900E470A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2807E0972A723A6900E470A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2807E0A32A723F2200E470A6 /* ListLeagues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListLeagues.swift; sourceTree = "<group>"; };
+		2807E0A52A72443800E470A6 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		2807E0A82A72528D00E470A6 /* SearchBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarViewController.swift; sourceTree = "<group>"; };
+		2807E0AA2A7252E500E470A6 /* AboutUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
+		2843A5E52A7294050009E3D3 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		2843A5E82A7296850009E3D3 /* NetworkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLayer.swift; sourceTree = "<group>"; };
+		2843A5EB2A7296C30009E3D3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		2843A5ED2A72ADBE0009E3D3 /* CustomTabCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +55,7 @@
 			isa = PBXGroup;
 			children = (
 				2807E0882A723A6800E470A6 /* FootballStandingsApp */,
+				2807E09F2A723AB800E470A6 /* Resources */,
 				2807E0872A723A6800E470A6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -56,15 +71,125 @@
 		2807E0882A723A6800E470A6 /* FootballStandingsApp */ = {
 			isa = PBXGroup;
 			children = (
-				2807E0892A723A6800E470A6 /* AppDelegate.swift */,
-				2807E08B2A723A6800E470A6 /* SceneDelegate.swift */,
-				2807E08D2A723A6800E470A6 /* ViewController.swift */,
-				2807E08F2A723A6800E470A6 /* Main.storyboard */,
-				2807E0922A723A6900E470A6 /* Assets.xcassets */,
-				2807E0942A723A6900E470A6 /* LaunchScreen.storyboard */,
 				2807E0972A723A6900E470A6 /* Info.plist */,
+				2807E09E2A723A9000E470A6 /* AppDelegate */,
+				2807E09D2A723A7C00E470A6 /* Model */,
+				2807E0A72A72524B00E470A6 /* Modules */,
 			);
 			path = FootballStandingsApp;
+			sourceTree = "<group>";
+		};
+		2807E09D2A723A7C00E470A6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2843A5EA2A7296AA0009E3D3 /* Constants */,
+				2843A5E72A7296660009E3D3 /* ApiManager */,
+				2807E0A22A723F0600E470A6 /* DTOs */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2807E09E2A723A9000E470A6 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				2807E0892A723A6800E470A6 /* AppDelegate.swift */,
+				2807E08B2A723A6800E470A6 /* SceneDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		2807E09F2A723AB800E470A6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2807E0922A723A6900E470A6 /* Assets.xcassets */,
+				2807E0942A723A6900E470A6 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		2807E0A02A723B4F00E470A6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2843A5E02A7292DE0009E3D3 /* MainTabbar */,
+				2843A5E12A7293540009E3D3 /* MainView */,
+				2843A5E22A7293770009E3D3 /* SearchView */,
+				2843A5E32A7293820009E3D3 /* AboutUsView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		2807E0A22A723F0600E470A6 /* DTOs */ = {
+			isa = PBXGroup;
+			children = (
+				2807E0A32A723F2200E470A6 /* ListLeagues.swift */,
+			);
+			path = DTOs;
+			sourceTree = "<group>";
+		};
+		2807E0A72A72524B00E470A6 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				2807E0A02A723B4F00E470A6 /* Views */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		2843A5E02A7292DE0009E3D3 /* MainTabbar */ = {
+			isa = PBXGroup;
+			children = (
+				2807E0A52A72443800E470A6 /* MainTabBarController.swift */,
+			);
+			path = MainTabbar;
+			sourceTree = "<group>";
+		};
+		2843A5E12A7293540009E3D3 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				2843A5E42A7293C90009E3D3 /* Components */,
+				2807E08D2A723A6800E470A6 /* MainViewController.swift */,
+				2843A5E52A7294050009E3D3 /* MainViewModel.swift */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
+		2843A5E22A7293770009E3D3 /* SearchView */ = {
+			isa = PBXGroup;
+			children = (
+				2807E0A82A72528D00E470A6 /* SearchBarViewController.swift */,
+			);
+			path = SearchView;
+			sourceTree = "<group>";
+		};
+		2843A5E32A7293820009E3D3 /* AboutUsView */ = {
+			isa = PBXGroup;
+			children = (
+				2807E0AA2A7252E500E470A6 /* AboutUsViewController.swift */,
+			);
+			path = AboutUsView;
+			sourceTree = "<group>";
+		};
+		2843A5E42A7293C90009E3D3 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				2843A5ED2A72ADBE0009E3D3 /* CustomTabCell.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		2843A5E72A7296660009E3D3 /* ApiManager */ = {
+			isa = PBXGroup;
+			children = (
+				2843A5E82A7296850009E3D3 /* NetworkLayer.swift */,
+			);
+			path = ApiManager;
+			sourceTree = "<group>";
+		};
+		2843A5EA2A7296AA0009E3D3 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				2843A5EB2A7296C30009E3D3 /* Constants.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +252,6 @@
 			files = (
 				2807E0962A723A6900E470A6 /* LaunchScreen.storyboard in Resources */,
 				2807E0932A723A6900E470A6 /* Assets.xcassets in Resources */,
-				2807E0912A723A6800E470A6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +262,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2807E08E2A723A6800E470A6 /* ViewController.swift in Sources */,
+				2843A5E92A7296850009E3D3 /* NetworkLayer.swift in Sources */,
+				2807E08E2A723A6800E470A6 /* MainViewController.swift in Sources */,
 				2807E08A2A723A6800E470A6 /* AppDelegate.swift in Sources */,
+				2807E0A92A72528D00E470A6 /* SearchBarViewController.swift in Sources */,
+				2807E0A62A72443800E470A6 /* MainTabBarController.swift in Sources */,
+				2843A5EC2A7296C30009E3D3 /* Constants.swift in Sources */,
+				2843A5EE2A72ADBE0009E3D3 /* CustomTabCell.swift in Sources */,
+				2807E0AB2A7252E500E470A6 /* AboutUsViewController.swift in Sources */,
+				2807E0A42A723F2200E470A6 /* ListLeagues.swift in Sources */,
 				2807E08C2A723A6800E470A6 /* SceneDelegate.swift in Sources */,
+				2843A5E62A7294050009E3D3 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		2807E08F2A723A6800E470A6 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2807E0902A723A6800E470A6 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		2807E0942A723A6900E470A6 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -292,7 +416,6 @@
 				INFOPLIST_FILE = FootballStandingsApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -320,7 +443,6 @@
 				INFOPLIST_FILE = FootballStandingsApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

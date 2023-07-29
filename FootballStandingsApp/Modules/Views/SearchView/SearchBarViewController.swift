@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SearchBarViewController.swift
 //  FootballStandingsApp
 //
 //  Created by Nurlan Seitov on 27/7/23.
@@ -7,13 +7,9 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class SearchBarViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .systemYellow
     }
-
-
 }
-
