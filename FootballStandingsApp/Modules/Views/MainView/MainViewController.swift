@@ -11,7 +11,7 @@ class MainViewController: UIViewController {
     
     private let mainViewModel = MainViewModel()
     
-    private var lists: [ListLeagues] = []
+    private var dataItems: [Datum] = []
     
     private lazy var tableView: UITableView = {
         let table = UITableView()
@@ -42,10 +42,11 @@ class MainViewController: UIViewController {
 //        view.backgroundColor = .systemBlue
         view.addSubview(tableView)
         setuptableView()
+        loadApi()
         
     }
     private func setuptableView() {
-        setupFakeData()
+        
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(CustomTabCell.self, forCellReuseIdentifier: CustomTabCell.reuseId)
@@ -54,59 +55,32 @@ class MainViewController: UIViewController {
 //            bundle: nil),forCellReuseIdentifier: CustomTabCell.reuseId)
         tableView.backgroundColor = UIColor(named: "darkColor")
     }
-    private func setupFakeData() {
-        // Создаем объекты Logos let logos1 = Logos(light: "ссылка_на_светлый_логотип1", dark: "ссылка_на_темный_логотип1")
-        let logos1 = Logos(light: "basketball", dark: "basketball.fill")
-        let logos2 = Logos(light: "basketball", dark: "basketball.fill")
-        let logos3 = Logos(light: "basketball", dark: "basketball.fill")
-        let logos4 = Logos(light: "basketball", dark: "basketball.fill")
-        let logos5 = Logos(light: "basketball", dark: "basketball.fill")
-        let logos6 = Logos(light: "basketball", dark: "basketball.fill")
 
-        // Создаем объекты Datum с использованием объектов Logos
-        let datum1 = Datum(id: "1", name: "League 1", slug: "slug1", abbr: "abbr1", logos: logos1)
-        let datum2 = Datum(id: "2", name: "League 2", slug: "slug2", abbr: "abbr2", logos: logos2)
-        let datum3 = Datum(id: "3", name: "League 3", slug: "slug3", abbr: "abbr3", logos: logos3)
-        let datum4 = Datum(id: "4", name: "League 4", slug: "slug4", abbr: "abbr4", logos: logos4)
-        let datum5 = Datum(id: "5", name: "League 5", slug: "slug5", abbr: "abbr5", logos: logos5)
-        let datum6 = Datum(id: "6", name: "League 6", slug: "slug6", abbr: "abbr6", logos: logos6)
-
-        // Создаем объекты ListLeagues с массивами из одного элемента Datum
-        let listLeagues1 = ListLeagues(status: true, data: [datum1])
-        let listLeagues2 = ListLeagues(status: true, data: [datum2])
-        let listLeagues3 = ListLeagues(status: true, data: [datum3])
-        let listLeagues4 = ListLeagues(status: true, data: [datum4])
-        let listLeagues5 = ListLeagues(status: true, data: [datum5])
-        let listLeagues6 = ListLeagues(status: true, data: [datum6])
-
-        // Добавляем объекты ListLeagues в массив lists
-        lists = [listLeagues1, listLeagues2, listLeagues3,listLeagues4, listLeagues5, listLeagues6]
+    private func loadApi() {
+        
+        let networkLayer = NetworkLayer()
+        
+        networkLayer.fetchList { [weak self] result in
+            switch result {
+            case .success(let data):
+                DispatchQueue.main.async {
+                    guard let `self` else {return}
+                    self.dataItems = data.data
+                    self.tableView.reloadData()
+//                    let vc = GetRequestPage()
+//                    vc.data = data.products ?? []
+//                     self.navigationController?.pushViewController(vc, animated: true)
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
 }
     
-
-//        private func fetchList() {
-//
-//            Task {
-//                do {
-//                    let response = try await mainViewModel.fetchList()
-//                    DispatchQueue.main.async {
-//                        self.list = response.data.id
-//                        self.tableView.reloadData()
-//                    }
-//                } catch {
-////                    showAlert(with: error.localizedDescription)
-//                    print(error.localizedDescription)
-//                }
-//            }
-//        }
-//    }
-
-
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        print(lists.count)
-       return lists.count
+       return dataItems.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath
@@ -117,25 +91,18 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         
-        let listLeagues = lists[indexPath.row]
-        if let datum = listLeagues.data.first {
-            cell.idLabel.text = datum.id
-            cell.nameLabel.text = datum.name
-            cell.slugLabel.text = datum.slug
-            cell.abbrLabel.text = datum.abbr
-            cell.logoImageView.image = UIImage(named: datum.logos.light)
-        }
-        
+        let datum = dataItems[indexPath.row]
+        cell.display(item: datum, atIndex: indexPath.row + 1)
        
-           
-       
-        
-//        cell.display(item: listLeagues)
-//        cell.textLabel?.text = "rrrrrrrrrr"
-        
-//        cell.backgroundColor = .red
         return cell
     }
+    
+//    cell.idLabel.text = datum.id
+//    cell.nameLabel.text = datum.name
+//    cell.slugLabel.text = datum.slug
+//    cell.abbrLabel.text = datum.abbr
+//    cell.logoImageView.image = UIImage(named: datum.logos.light)
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }

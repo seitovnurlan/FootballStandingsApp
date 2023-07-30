@@ -35,14 +35,21 @@ class MainTabBarController: UITabBarController {
         searchBarVc.tabBarItem = tabItem2
         
         
+        let favouritesVc = UINavigationController(rootViewController: FavouritesViewController())
+        let tabItem3 = UITabBarItem(title: "Избранное",
+                                            image: UIImage(named: "star.fill"),
+                                            selectedImage: UIImage(named: "star.fill"))
+        
+        favouritesVc.tabBarItem = tabItem3
+        
         let aboutUsVc = UINavigationController(rootViewController: AboutUsViewController())
-        let tabItem3 = UITabBarItem(title: "О нас",
+        let tabItem4 = UITabBarItem(title: "О нас",
                                             image: UIImage(named: "soccerball"),
                                             selectedImage: UIImage(named: "soccerball"))
         
-        aboutUsVc.tabBarItem = tabItem3
+        aboutUsVc.tabBarItem = tabItem4
         
-        viewControllers = [mainVc, searchBarVc, aboutUsVc]
+        viewControllers = [mainVc, searchBarVc, favouritesVc, aboutUsVc]
 //        tabBar.backgroundColor = .systemBackground
         tabBar.backgroundColor = .white
     }

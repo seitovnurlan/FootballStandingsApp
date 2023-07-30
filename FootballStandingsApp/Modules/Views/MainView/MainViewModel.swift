@@ -9,11 +9,11 @@ import Foundation
 
 class MainViewModel {
     
-    private let networkLayer = NetworkLayer()
-    
-    var list: [ListLeagues] = []
-
-    func fetchList () async throws -> ListLeagues {
-           try await networkLayer.fetchList()
-    }
+//    private let networkLayer = NetworkLayer()
+//
+//    var list: [ListLeagues] = []
+//
+//    func fetchList () async throws -> ListLeagues {
+//           try await networkLayer.fetchList()
+//    }
 }

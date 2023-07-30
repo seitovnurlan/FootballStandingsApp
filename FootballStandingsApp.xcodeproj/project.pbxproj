@@ -20,6 +20,7 @@
 		2843A5E92A7296850009E3D3 /* NetworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2843A5E82A7296850009E3D3 /* NetworkLayer.swift */; };
 		2843A5EC2A7296C30009E3D3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2843A5EB2A7296C30009E3D3 /* Constants.swift */; };
 		2843A5EE2A72ADBE0009E3D3 /* CustomTabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2843A5ED2A72ADBE0009E3D3 /* CustomTabCell.swift */; };
+		2843A5F12A769A230009E3D3 /* FavouritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2843A5F02A769A230009E3D3 /* FavouritesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		2843A5E82A7296850009E3D3 /* NetworkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLayer.swift; sourceTree = "<group>"; };
 		2843A5EB2A7296C30009E3D3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2843A5ED2A72ADBE0009E3D3 /* CustomTabCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabCell.swift; sourceTree = "<group>"; };
+		2843A5F02A769A230009E3D3 /* FavouritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 				2843A5E02A7292DE0009E3D3 /* MainTabbar */,
 				2843A5E12A7293540009E3D3 /* MainView */,
 				2843A5E22A7293770009E3D3 /* SearchView */,
+				2843A5EF2A7699E00009E3D3 /* Favourites */,
 				2843A5E32A7293820009E3D3 /* AboutUsView */,
 			);
 			path = Views;
@@ -192,6 +195,14 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
+		2843A5EF2A7699E00009E3D3 /* Favourites */ = {
+			isa = PBXGroup;
+			children = (
+				2843A5F02A769A230009E3D3 /* FavouritesViewController.swift */,
+			);
+			path = Favourites;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -268,6 +279,7 @@
 				2807E0A92A72528D00E470A6 /* SearchBarViewController.swift in Sources */,
 				2807E0A62A72443800E470A6 /* MainTabBarController.swift in Sources */,
 				2843A5EC2A7296C30009E3D3 /* Constants.swift in Sources */,
+				2843A5F12A769A230009E3D3 /* FavouritesViewController.swift in Sources */,
 				2843A5EE2A72ADBE0009E3D3 /* CustomTabCell.swift in Sources */,
 				2807E0AB2A7252E500E470A6 /* AboutUsViewController.swift in Sources */,
 				2807E0A42A723F2200E470A6 /* ListLeagues.swift in Sources */,
