@@ -21,6 +21,9 @@
 		2843A5EC2A7296C30009E3D3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2843A5EB2A7296C30009E3D3 /* Constants.swift */; };
 		2843A5EE2A72ADBE0009E3D3 /* CustomTabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2843A5ED2A72ADBE0009E3D3 /* CustomTabCell.swift */; };
 		2843A5F12A769A230009E3D3 /* FavouritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2843A5F02A769A230009E3D3 /* FavouritesViewController.swift */; };
+		2843A5F32A76EEBC0009E3D3 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2843A5F22A76EEBC0009E3D3 /* SecondViewController.swift */; };
+		2843A5F82A770E100009E3D3 /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2843A5F72A770E100009E3D3 /* UserDefaultsKeys.swift */; };
+		2843A5FB2A770E500009E3D3 /* UserdefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2843A5FA2A770E500009E3D3 /* UserdefaultsService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +43,9 @@
 		2843A5EB2A7296C30009E3D3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2843A5ED2A72ADBE0009E3D3 /* CustomTabCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabCell.swift; sourceTree = "<group>"; };
 		2843A5F02A769A230009E3D3 /* FavouritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewController.swift; sourceTree = "<group>"; };
+		2843A5F22A76EEBC0009E3D3 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		2843A5F72A770E100009E3D3 /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
+		2843A5FA2A770E500009E3D3 /* UserdefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserdefaultsService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +90,8 @@
 		2807E09D2A723A7C00E470A6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2843A5F92A770E3C0009E3D3 /* Services */,
+				2843A5F62A770DED0009E3D3 /* Extensions */,
 				2843A5EA2A7296AA0009E3D3 /* Constants */,
 				2843A5E72A7296660009E3D3 /* ApiManager */,
 				2807E0A22A723F0600E470A6 /* DTOs */,
@@ -151,6 +159,7 @@
 				2843A5E42A7293C90009E3D3 /* Components */,
 				2807E08D2A723A6800E470A6 /* MainViewController.swift */,
 				2843A5E52A7294050009E3D3 /* MainViewModel.swift */,
+				2843A5F22A76EEBC0009E3D3 /* SecondViewController.swift */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
@@ -201,6 +210,22 @@
 				2843A5F02A769A230009E3D3 /* FavouritesViewController.swift */,
 			);
 			path = Favourites;
+			sourceTree = "<group>";
+		};
+		2843A5F62A770DED0009E3D3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		2843A5F92A770E3C0009E3D3 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				2843A5F72A770E100009E3D3 /* UserDefaultsKeys.swift */,
+				2843A5FA2A770E500009E3D3 /* UserdefaultsService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,8 +302,11 @@
 				2807E08E2A723A6800E470A6 /* MainViewController.swift in Sources */,
 				2807E08A2A723A6800E470A6 /* AppDelegate.swift in Sources */,
 				2807E0A92A72528D00E470A6 /* SearchBarViewController.swift in Sources */,
+				2843A5FB2A770E500009E3D3 /* UserdefaultsService.swift in Sources */,
 				2807E0A62A72443800E470A6 /* MainTabBarController.swift in Sources */,
 				2843A5EC2A7296C30009E3D3 /* Constants.swift in Sources */,
+				2843A5F32A76EEBC0009E3D3 /* SecondViewController.swift in Sources */,
+				2843A5F82A770E100009E3D3 /* UserDefaultsKeys.swift in Sources */,
 				2843A5F12A769A230009E3D3 /* FavouritesViewController.swift in Sources */,
 				2843A5EE2A72ADBE0009E3D3 /* CustomTabCell.swift in Sources */,
 				2807E0AB2A7252E500E470A6 /* AboutUsViewController.swift in Sources */,

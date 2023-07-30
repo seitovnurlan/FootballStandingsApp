@@ -38,8 +38,8 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        view.backgroundColor = .systemBlue
+        view.backgroundColor = .black
+//        view.backgroundColor = UIImage(named: "ball")
         view.addSubview(tableView)
         setuptableView()
         loadApi()
@@ -108,11 +108,8 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-//        let model = lists[indexPath.row]
-//        print(lists[indexPath.row])
-//        UserdefaultStorage.shared.save(
-//            model.title,
-//            forKey: .titleName
-//        )
+        let model = dataItems[indexPath.row]
+
+        navigationController?.pushViewController(SecondViewController(), animated: false)
     }
 }
