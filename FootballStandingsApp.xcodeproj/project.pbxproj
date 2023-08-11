@@ -24,6 +24,8 @@
 		2843A5F32A76EEBC0009E3D3 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2843A5F22A76EEBC0009E3D3 /* SecondViewController.swift */; };
 		2843A5F82A770E100009E3D3 /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2843A5F72A770E100009E3D3 /* UserDefaultsKeys.swift */; };
 		2843A5FB2A770E500009E3D3 /* UserdefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2843A5FA2A770E500009E3D3 /* UserdefaultsService.swift */; };
+		2843A5FD2A77C2430009E3D3 /* FavouriteCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2843A5FC2A77C2430009E3D3 /* FavouriteCellData.swift */; };
+		28F367162A8524D100659BF6 /* FavouritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F367152A8524D100659BF6 /* FavouritesManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,8 @@
 		2843A5F22A76EEBC0009E3D3 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		2843A5F72A770E100009E3D3 /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
 		2843A5FA2A770E500009E3D3 /* UserdefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserdefaultsService.swift; sourceTree = "<group>"; };
+		2843A5FC2A77C2430009E3D3 /* FavouriteCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteCellData.swift; sourceTree = "<group>"; };
+		28F367152A8524D100659BF6 /* FavouritesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +164,7 @@
 				2807E08D2A723A6800E470A6 /* MainViewController.swift */,
 				2843A5E52A7294050009E3D3 /* MainViewModel.swift */,
 				2843A5F22A76EEBC0009E3D3 /* SecondViewController.swift */,
+				28F367152A8524D100659BF6 /* FavouritesManager.swift */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
@@ -208,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				2843A5F02A769A230009E3D3 /* FavouritesViewController.swift */,
+				2843A5FC2A77C2430009E3D3 /* FavouriteCellData.swift */,
 			);
 			path = Favourites;
 			sourceTree = "<group>";
@@ -299,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2843A5E92A7296850009E3D3 /* NetworkLayer.swift in Sources */,
+				2843A5FD2A77C2430009E3D3 /* FavouriteCellData.swift in Sources */,
 				2807E08E2A723A6800E470A6 /* MainViewController.swift in Sources */,
 				2807E08A2A723A6800E470A6 /* AppDelegate.swift in Sources */,
 				2807E0A92A72528D00E470A6 /* SearchBarViewController.swift in Sources */,
@@ -309,6 +316,7 @@
 				2843A5F82A770E100009E3D3 /* UserDefaultsKeys.swift in Sources */,
 				2843A5F12A769A230009E3D3 /* FavouritesViewController.swift in Sources */,
 				2843A5EE2A72ADBE0009E3D3 /* CustomTabCell.swift in Sources */,
+				28F367162A8524D100659BF6 /* FavouritesManager.swift in Sources */,
 				2807E0AB2A7252E500E470A6 /* AboutUsViewController.swift in Sources */,
 				2807E0A42A723F2200E470A6 /* ListLeagues.swift in Sources */,
 				2807E08C2A723A6800E470A6 /* SceneDelegate.swift in Sources */,

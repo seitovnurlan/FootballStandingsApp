@@ -11,6 +11,14 @@ class CustomTabCell: UITableViewCell {
     static let reuseId = String(describing: CustomTabCell.self)
     static let nibName = String(describing: CustomTabCell.self)
     
+    var cellData: Datum?
+    var favouriteButtonTapHandler: ((Bool) -> Void)?
+    var isFavourite: Bool = false {
+        didSet {
+            updateFavouriteButtonImage()
+        }
+    }
+    
     public lazy var idLabel: UILabel = {
         let title = UILabel()
         title.font = .systemFont(ofSize: 14)
@@ -18,7 +26,6 @@ class CustomTabCell: UITableViewCell {
         title.textAlignment = .justified
         title.isUserInteractionEnabled = true
         title.translatesAutoresizingMaskIntoConstraints = false
-        title.text = "Hello,"
         return title
     } ()
     
@@ -29,7 +36,6 @@ class CustomTabCell: UITableViewCell {
         title.textAlignment = .justified
         title.isUserInteractionEnabled = true
         title.translatesAutoresizingMaskIntoConstraints = false
-        title.text = " world!"
         return title
     } ()
     
@@ -93,86 +99,7 @@ class CustomTabCell: UITableViewCell {
         slugLabel.text = nil
         abbrLabel.text = nil
         logoImageView.image = nil
-//        favouriteButton.setImage(favouriteButton.image(for: .normal), for: .normal) = nil
     }
-    
-//    func setupConstraints() {
-//        addSubview(idLabel)
-//        addSubview(nameLabel)
-//        addSubview(slugLabel)
-//        addSubview(abbrLabel)
-//        addSubview(logoImageView)
-//        addSubview(favouriteButton)
-//
-//            NSLayoutConstraint.activate([
-//                idLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
-//                idLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
-//
-//                logoImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
-//                logoImageView.leadingAnchor.constraint(equalTo: idLabel.trailingAnchor, constant: 10),
-//                logoImageView.heightAnchor.constraint(equalToConstant: 80),
-//                logoImageView.widthAnchor.constraint(equalToConstant: 80),
-//
-//                nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
-//                nameLabel.leadingAnchor.constraint(equalTo: logoImageView.trailingAnchor, constant: 10),
-//
-//                slugLabel.topAnchor.constraint(equalTo: nameLabel.topAnchor, constant: 25),
-//                slugLabel.leadingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 10),
-//
-//                abbrLabel.topAnchor.constraint(equalTo: slugLabel.topAnchor, constant: 45),
-//                abbrLabel.leadingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 10),
-//
-//                favouriteButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
-//
-//                favouriteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5),
-//                favouriteButton.heightAnchor.constraint(equalToConstant: 30),
-//                favouriteButton.widthAnchor.constraint(equalToConstant: 30)
-//            ])
-//
-//            contentView.trailingAnchor.constraint(equalTo: favouriteButton.trailingAnchor, constant: 5).isActive = true
-//        }
-    
-//    func setupConstraints() {
-//        addSubview(idLabel)
-//        addSubview(nameLabel)
-//        addSubview(slugLabel)
-//        addSubview(abbrLabel)
-//        addSubview(logoImageView)
-//        addSubview(favouriteButton)
-//
-//        let firstRowStack = UIStackView(arrangedSubviews: [idLabel, logoImageView, nameLabel])
-//        firstRowStack.spacing = 10
-//        firstRowStack.translatesAutoresizingMaskIntoConstraints = false
-//        addSubview(firstRowStack)
-//
-//        let secondRowStack = UIStackView(arrangedSubviews: [slugLabel, abbrLabel])
-//        secondRowStack.axis = .vertical
-//        secondRowStack.spacing = 5
-//        secondRowStack.translatesAutoresizingMaskIntoConstraints = false
-//        addSubview(secondRowStack)
-//
-//        let mainStack = UIStackView(arrangedSubviews: [firstRowStack, secondRowStack, favouriteButton])
-//        mainStack.axis = .vertical
-//        mainStack.spacing = 10
-//        mainStack.translatesAutoresizingMaskIntoConstraints = false
-//        addSubview(mainStack)
-//
-//        NSLayoutConstraint.activate([
-//            firstRowStack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
-//            firstRowStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
-//
-//            logoImageView.heightAnchor.constraint(equalToConstant: 80),
-//            logoImageView.widthAnchor.constraint(equalToConstant: 80),
-//
-//            secondRowStack.leadingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 10),
-//
-//            favouriteButton.heightAnchor.constraint(equalToConstant: 30),
-//            favouriteButton.widthAnchor.constraint(equalToConstant: 30),
-//
-//            mainStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5),
-//            mainStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5)
-//        ])
-//    }
 
     func setupConstraints() {
         addSubview(idLabel)
@@ -183,8 +110,8 @@ class CustomTabCell: UITableViewCell {
         addSubview(favouriteButton)
 
         NSLayoutConstraint.activate([
-            idLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 25),
-            idLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
+            idLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 30),
+            idLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
 
             logoImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
             logoImageView.leadingAnchor.constraint(equalTo: idLabel.trailingAnchor, constant: 10),
@@ -203,12 +130,12 @@ class CustomTabCell: UITableViewCell {
             abbrLabel.leadingAnchor.constraint(equalTo: logoImageView.trailingAnchor, constant: 10),
 //            abbrLabel.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -5),
 
-            favouriteButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 30),
+            favouriteButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40),
             favouriteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 370),
             favouriteButton.heightAnchor.constraint(equalToConstant: 30),
             favouriteButton.widthAnchor.constraint(equalToConstant: 30),
         ])
-            contentView.bottomAnchor.constraint(equalTo: abbrLabel.bottomAnchor, constant: 10).isActive = true
+        contentView.bottomAnchor.constraint(equalTo: abbrLabel.bottomAnchor, constant: 10).isActive = true
     }
 
     func display(item: Datum, atIndex index: Int) {
@@ -235,7 +162,7 @@ class CustomTabCell: UITableViewCell {
             }
             task.resume()
         }
-
+        self.cellData = item
 //        idLabel.text = item.id
         idLabel.text = "\(index)"
         nameLabel.text = item.name
@@ -244,19 +171,59 @@ class CustomTabCell: UITableViewCell {
     }
 
     @objc func tappedFavouriteButton(tapGestureRecognizer: UITapGestureRecognizer) {
-//        let tappedImage = tapGestureRecognizer.view as! UIImageView
         
-        favouriteButton.setImage(favouriteButton.image(for: .normal) == UIImage(named: "star") ? UIImage(named: "star.fill") : UIImage(named: "star"), for: .normal)
+        guard let cellData = cellData else {
+               return // В случае отсутствия данных, просто выходим
+           }
         
-//        let model = dataItems[indexPath.row]
-//        let id = item.id
-//        UserdefaultsService.shared.save(
-//
-//            model.id,
-//            forKey: .titleName
-//        )
-    }
+        isFavourite.toggle() // Переключение состояния кнопки
+        updateFavouriteButtonImage() // Вызываем метод обновления изображения кнопки
+        
+        if isFavourite {
+                FavouritesManager.shared.addToFavourites(cellData)
+            } else {
+                FavouritesManager.shared.removeFromFavourites(cellData)
+            }
 
+            favouriteButtonTapHandler?(isFavourite)
+        
+        
+        
+//        let key = "Favorite_\(cellData.id)"
+//           // Обращение к UserDefaultsService и сохранение/удаление данных
+//        isFavourite ? UserdefaultsService.shared.save(cellData.id, forKey: key) : UserdefaultsService.shared.remove(forKey: key)
+//
+//           favouriteButtonTapHandler?(cellData, isFavourite)
+//
+//        if isFavourite {
+//                if !dataItemsFavourite.contains(where: { $0.id == cellData.id }) {
+//                    dataItemsFavourite.append(cellData)
+//                    tableView.reloadData() // Обновление таблицы в FavouritesViewController
+//                }
+//        } else {
+//            if let index = dataItemsFavourite.firstIndex(where: { $0.id == cellData.id }) {
+//                dataItemsFavourite.remove(at: index)
+//                tableView.reloadData() // Обновление таблицы в FavouritesViewController
+//            }
+            
+            //        favouriteButton.setImage(favouriteButton.image(for: .normal) == UIImage(named: "star") ? UIImage(named: "star.fill") : UIImage(named: "star"), for: .normal)
+            //        var isFavourite = favouriteButton.image(for: .normal) == UIImage(named: "star.fill")
+            //        isFavourite.toggle() // Переключение состояния кнопки
+            //        favouriteButtonTapHandler?(isFavourite)
+            
+            //        let model = dataItems[indexPath.row]
+            //        let id = item.id
+            //        UserdefaultsService.shared.save(
+            //
+            //            model.id,
+            //            forKey: .titleName
+            //        )
+//        }
+    }
+    func updateFavouriteButtonImage() {
+            let imageName = isFavourite ? "star.fill" : "star"
+            favouriteButton.setImage(UIImage(named: imageName), for: .normal)
+        }
 
 }
 

@@ -9,22 +9,23 @@ import Foundation
 
 final class UserdefaultsService {
     
-    enum Keys: String {
-        case titleName
-    }
+//    enum Keys: String {
+//        case titleName
+//    }
     
     static let shared = UserdefaultsService()
     
     private init() { }
     
-    func save<T: Any>(_ item: T, forKey key: Keys) {
-        UserDefaults.standard.setValue(item, forKey: key.rawValue)
+    func save<T: Any>(_ item: T, forKey key: String) {
+//        UserDefaults.standard.setValue(item, forKey: key.rawValue)
+        UserDefaults.standard.setValue(item, forKey: key)
     }
-    func remove(forKey key: Keys) {
-        UserDefaults.standard.removeObject(forKey: key.rawValue)
+    func remove(forKey key: String) {
+        UserDefaults.standard.removeObject(forKey: key)
     }
-    func getString(forKey key: Keys) -> String? {
-        UserDefaults.standard.string(forKey: key.rawValue)
+    func get<T: Any>(forKey key: String) -> T? {
+       return UserDefaults.standard.object(forKey: key) as? T
     }
 //    func get<T: Any>(forKey key: Keys) -> T? {
 //        UserDefaults.standard.object(forKey: key.rawValue) as? T

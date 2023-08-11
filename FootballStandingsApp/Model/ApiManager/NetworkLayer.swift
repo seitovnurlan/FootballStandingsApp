@@ -30,6 +30,7 @@ class NetworkLayer {
             
             if let error = error {
                 completion(.failure(error))
+//                print(error)
             }
             guard let data = data else {return}
             do {
@@ -38,6 +39,7 @@ class NetworkLayer {
             }
             catch let error {
                 completion(.failure(error))
+//                print(error)
             }
         }
         .resume()
