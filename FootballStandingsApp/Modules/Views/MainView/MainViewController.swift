@@ -6,12 +6,19 @@
 //
 import UIKit
 
+protocol FavouriteDelegate: AnyObject {
+    func didUpdateFavouriteStatus(for datum: FavouriteDatum)
+}
+
 class MainViewController: UIViewController {
-    
+   
     private let mainViewModel = MainViewModel()
     
-    private var dataItems: [Datum] = []
-    private var favouriteItems: [Datum] = []
+//    private var dataItems: [Datum] = []
+    var favouriteItems: [Datum] = []
+    var favouriteStates: [String: Bool] = [:] // Словарь для хранения состояний избранного
+    var dataClick: [Datum] = []               // массив для хранения данных по состоянию нажатия кнопок
+    var dataItems: [FavouriteDatum] = []
     
     private lazy var tableView: UITableView = {
         let table = UITableView()
@@ -29,12 +36,6 @@ class MainViewController: UIViewController {
         //        fetchList()
         tableView.reloadData()
     }
-    
-//
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,30 +58,24 @@ class MainViewController: UIViewController {
     }
 
     private func loadApi() {
-       
-//        DispatchQueue.global(qos: .userInitiated).async {[weak self] in
-//            
-//        }
-        let networkLayer = NetworkLayer()
-        
-        networkLayer.fetchList { [weak self] result in
-            switch result {
-            case .success(let data):
-                DispatchQueue.main.async {
-                    guard let `self` else {return}
-                    self.dataItems = data.data
-        
-                    self.tableView.reloadData()
-//                    let vc = GetRequestPage()
-//                    vc.data = data.products ?? []
-//                     self.navigationController?.pushViewController(vc, animated: true)
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            guard let self = self else { return }
+            let networkLayer = NetworkLayer()
+            
+            networkLayer.fetchList { result in
+                switch result {
+                case .success(let data):
+                    DispatchQueue.main.async {
+                        self.dataItems = data.data
+                        self.tableView.reloadData()
+                    }
+                case .failure(let error):
+                    DispatchQueue.main.async {
+                        self.showAlertWithTitle("Ошибка!", message: error.localizedDescription)
+                    }
+                    //  case .failure(let error):
+                    // print(error.localizedDescription)
                 }
-            case .failure(let error):
-                       DispatchQueue.main.async {
-                           self?.showAlertWithTitle("Error", message: error.localizedDescription)
-                       }
-//            case .failure(let error):
-//                print(error.localizedDescription)
             }
         }
     }
@@ -107,17 +102,12 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         
         let datum = dataItems[indexPath.row]
         cell.cellData = datum
+        cell.delegate = self
 //        cell.isFavourite = UserdefaultsService.shared.get(forKey: "Favourite_\(datum.id)") != nil
         cell.display(item: datum, atIndex: indexPath.row + 1)
-        
+       
         return cell
     }
-    
-//    cell.idLabel.text = datum.id
-//    cell.nameLabel.text = datum.name
-//    cell.slugLabel.text = datum.slug
-//    cell.abbrLabel.text = datum.abbr
-//    cell.logoImageView.image = UIImage(named: datum.logos.light)
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
@@ -126,7 +116,6 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let selectedDatum = dataItems[indexPath.row]
-        
         let secondViewController = SecondViewController()
         secondViewController.selectedData = selectedDatum
         secondViewController.index = indexPath.row + 1
@@ -137,20 +126,71 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         // Устанавливаем состояние кнопки "Favourite" во втором контроллере на основе наличия выбранного элемента в массиве favouriteItems
         secondViewController.isFavourite = favouriteItems.contains { $0.id == selectedDatum.id }
         
-        secondViewController.favouriteButtonTapHandler = { [weak self] isFavourite in
-            print("Index: \(indexPath.row), isFavourite: \(isFavourite)")
-                if isFavourite {
-                    // Добавляем элемент в массив favouriteItems, если он еще не в нем
-                    if !(self?.favouriteItems.contains { $0.id == selectedDatum.id } ?? false) {
-                        self?.favouriteItems.append(selectedDatum)
-                    }
-                } else {
-                    // Удаляем элемент из массива favouriteItems
-                    if let index = self?.favouriteItems.firstIndex(where: { $0.id == selectedDatum.id }) {
-                        self?.favouriteItems.remove(at: index)
-                    }
-                }
-            }
+//        secondViewController.favouriteButtonTapHandler = { [weak self] isFavourite in
+//            print("Index: \(indexPath.row), isFavourite: \(isFavourite)")
+//                if isFavourite {
+//                    // Добавляем элемент в массив favouriteItems, если он еще не в нем
+//                    if !(self?.favouriteItems.contains { $0.id == selectedDatum.id } ?? false) {
+//                        self?.favouriteItems.append(selectedDatum)
+//                    }
+//                } else {
+//                    // Удаляем элемент из массива favouriteItems
+//                    if let index = self?.favouriteItems.firstIndex(where: { $0.id == selectedDatum.id }) {
+//                        self?.favouriteItems.remove(at: index)
+//                    }
+//                }
+//            }
+        secondViewController.isFavourite = favouriteItems.contains { $0.id == selectedDatum.id }
         navigationController?.pushViewController(secondViewController, animated: false)
     }
+}
+
+//extension MainViewController: CustomTabCellDelegate {
+//
+//    // Этот метод обработает нажатие на кнопку "Избранное" в ячейке
+//        func favouriteButtonTapped(isFavourite: Bool, cellId: String) {
+//
+//            // Обновляем состояние в массиве favouriteItems
+//              if isFavourite {
+//                  favouriteItems.append(dataItems.first { $0.id == cellId }!)
+//              } else {
+//                  favouriteItems.removeAll { $0.id == cellId }
+//              }
+//
+//    // Если второй контроллер уже открыт и имеет тот же id, обновляем его состояние избранного
+//                if let secondViewController = navigationController?.viewControllers.last as? SecondViewController,
+//                   secondViewController.selectedData?.id == cellId {
+//                    secondViewController.isFavourite = isFavourite
+//                    secondViewController.updateFavouriteButtonImage()
+//                }
+//
+////            // Найдем индекс ячейки, которая имеет переданный cellId
+////            if let index = dataItems.firstIndex(where: { $0.id == cellId }) {
+////                // Обновим данные ячейки в массиве
+////
+////
+////                // Если ячейка видима на экране, обновим ее отображение
+////                if let indexPath = tableView.indexPathsForVisibleRows?.first(where: { $0.row == index }) {
+////                    tableView.reloadRows(at: [indexPath], with: .none)
+////                }
+////            }
+//        }
+//}
+//
+//extension MainViewController: SecondViewControllerDelegate {
+//    func updateFavouriteState(for itemId: String, isFavourite: Bool) {
+//        favouriteStates[itemId] = isFavourite
+//        tableView.reloadData()
+//    }
+//}
+
+extension MainViewController: FavouriteDelegate {
+    func didUpdateFavouriteStatus(for datum: FavouriteDatum) {
+        if let index = dataItems.firstIndex(where: { $0.id == datum.id }) {
+                    dataItems[index] = datum
+                    tableView.reloadData()
+                }
+    }
+    
+    
 }

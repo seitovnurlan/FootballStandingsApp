@@ -6,18 +6,29 @@
 //
 import UIKit
 
+protocol SecondViewControllerDelegate: AnyObject {
+//    func updateFavouriteState(_ isFavourite: Bool, forCellWithId cellId: String)
+    func updateFavouriteState(for itemId: String, isFavourite: Bool)
+}
+
 class SecondViewController: UIViewController {
     
+    func updateFavouriteState(for itemId: String, isFavourite: Bool) {
+           self.isFavourite = isFavourite
+           updateFavouriteButtonImage()
+           print("сработал метод обновления состояния \(isFavourite)")
+       }
+    
+    weak var delegate: SecondViewControllerDelegate?
     var cellData: Datum?
-    var favouriteButtonTapHandler: ((Bool) -> Void)?
     var selectedData: Datum?
     var selectedImage: UIImage?
     var index: Int = 0
-    var isFavourite: Bool = false {
+    var isFavourite: Bool = false
+        {
             didSet {
-                // Обновляем состояние кнопки "Favourite" при установке значения isFavourite
-                           favouriteButtonSecond.setImage(isFavourite ? UIImage(named: "star.fill") : UIImage(named: "star"), for: .normal)
-                    }
+              updateFavouriteButtonImage()
+            }
         }
     
     public lazy var idLabelSecond: UILabel = {
@@ -110,6 +121,7 @@ class SecondViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.backgroundColor = .white
         setupConstraints()
         let key = "Favorite_\(cellData?.id)"
@@ -172,21 +184,18 @@ class SecondViewController: UIViewController {
 //        view.bottomAnchor.constraint(equalTo: abbrLabelSecond.bottomAnchor, constant: 400).isActive = true
     }
   
-    @objc func tappedButtonSecond(tapGestureRecognizer: UITapGestureRecognizer) {
+//    @objc func tappedButtonSecond(tapGestureRecognizer: UITapGestureRecognizer) {
+    @objc func tappedButtonSecond() {
         
         isFavourite.toggle() // Переключение состояния кнопки
         updateFavouriteButtonImage() // Вызываем метод обновления изображения кнопки
-        favouriteButtonTapHandler?(isFavourite) // Вызываем замыкание и передаем информацию о нажатии на кнопку
-            
-    //        favouriteButtonSecond.setImage(favouriteButtonSecond.image(for: .normal) == UIImage(named: "star") ? UIImage(named: "star.fill") : UIImage(named: "star"), for: .normal)
-    //
-    //        // Вызываем замыкание и передаем информацию о нажатии на кнопку
-    //        var isFavourite = favouriteButtonSecond.image(for: .normal) == UIImage(named: "star.fill")
-    //            isFavourite.toggle() // Переключение состояния кнопки
-    //           favouriteButtonTapHandler?(isFavourite)
+        if let selectedData = selectedData {
+            delegate?.updateFavouriteState(for: selectedData.id, isFavourite: isFavourite)
+            }
+        print("data.id: \(String(describing: selectedData?.id)), isFavourite: \(isFavourite)")
     }
     
-    private func updateFavouriteButtonImage() {
+    public func updateFavouriteButtonImage() {
             let imageName = isFavourite ? "star.fill" : "star"
             favouriteButtonSecond.setImage(UIImage(named: imageName), for: .normal)
         }

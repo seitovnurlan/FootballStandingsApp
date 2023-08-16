@@ -6,18 +6,26 @@
 //
 import UIKit
 
+//protocol CustomTabCellDelegate: AnyObject {
+//        func favouriteButtonTapped(isFavourite: Bool, cellId: String)
+//}
+
 class CustomTabCell: UITableViewCell {
     
     static let reuseId = String(describing: CustomTabCell.self)
     static let nibName = String(describing: CustomTabCell.self)
     
     var cellData: Datum?
-    var favouriteButtonTapHandler: ((Bool) -> Void)?
-    var isFavourite: Bool = false {
-        didSet {
-            updateFavouriteButtonImage()
-        }
-    }
+//    var isFavourite: Bool = false
+//    {
+//        didSet {
+//            updateFavouriteButtonImage()
+//        }
+//    }
+//    weak var delegate: CustomTabCellDelegate?
+    
+    weak var delegate: FavouriteDelegate?
+    private var data: FavouriteDatum?
     
     public lazy var idLabel: UILabel = {
         let title = UILabel()
@@ -94,10 +102,6 @@ class CustomTabCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        idLabel.text = nil
-        nameLabel.text = nil
-        slugLabel.text = nil
-        abbrLabel.text = nil
         logoImageView.image = nil
     }
 
@@ -170,57 +174,35 @@ class CustomTabCell: UITableViewCell {
         abbrLabel.text = item.abbr
     }
 
-    @objc func tappedFavouriteButton(tapGestureRecognizer: UITapGestureRecognizer) {
-        
-        guard let cellData = cellData else {
-               return // В случае отсутствия данных, просто выходим
-           }
-        
+//    @objc func tappedFavouriteButton(tapGestureRecognizer: UITapGestureRecognizer) {
+    @objc func tappedFavouriteButton() {
         isFavourite.toggle() // Переключение состояния кнопки
+       
         updateFavouriteButtonImage() // Вызываем метод обновления изображения кнопки
+        // Вызываем метод делегата и передаем информацию о состоянии и id
         
-        if isFavourite {
-                FavouritesManager.shared.addToFavourites(cellData)
-            } else {
-                FavouritesManager.shared.removeFromFavourites(cellData)
-            }
-
-            favouriteButtonTapHandler?(isFavourite)
-        
-        
-        
-//        let key = "Favorite_\(cellData.id)"
-//           // Обращение к UserDefaultsService и сохранение/удаление данных
-//        isFavourite ? UserdefaultsService.shared.save(cellData.id, forKey: key) : UserdefaultsService.shared.remove(forKey: key)
-//
-//           favouriteButtonTapHandler?(cellData, isFavourite)
-//
-//        if isFavourite {
-//                if !dataItemsFavourite.contains(where: { $0.id == cellData.id }) {
-//                    dataItemsFavourite.append(cellData)
-//                    tableView.reloadData() // Обновление таблицы в FavouritesViewController
-//                }
-//        } else {
-//            if let index = dataItemsFavourite.firstIndex(where: { $0.id == cellData.id }) {
-//                dataItemsFavourite.remove(at: index)
-//                tableView.reloadData() // Обновление таблицы в FavouritesViewController
-//            }
+        if let cellData = cellData {
+            // Доступ к свойству id без опциональности
+            let cellId = cellData.id
             
-            //        favouriteButton.setImage(favouriteButton.image(for: .normal) == UIImage(named: "star") ? UIImage(named: "star.fill") : UIImage(named: "star"), for: .normal)
-            //        var isFavourite = favouriteButton.image(for: .normal) == UIImage(named: "star.fill")
-            //        isFavourite.toggle() // Переключение состояния кнопки
-            //        favouriteButtonTapHandler?(isFavourite)
+            // Вызываем метод делегата и передаем информацию о состоянии и id
+            delegate?.favouriteButtonTapped(isFavourite: isFavourite, cellId: cellId)
             
-            //        let model = dataItems[indexPath.row]
-            //        let id = item.id
-            //        UserdefaultsService.shared.save(
-            //
-            //            model.id,
-            //            forKey: .titleName
-            //        )
-//        }
+            // Остальная логика, если необходима
+//            print("cellId/cellData.id : \(cellId), isFavourite: \(isFavourite)")
+            
+        } else {
+            print("cellData is nil")
+        }
+       
+        //        delegate?.favouriteButtonTapped(isFavourite: isFavourite, cellId: cellData?.id ?? "")
+        
+        //            let viewControllerFavourites = FavouritesViewController()
+        //            viewControllerFavourites.dataItemsFavourite.append(item)
+        
+        setNeedsLayout()
     }
-    func updateFavouriteButtonImage() {
+   private func updateFavouriteButtonImage() {
             let imageName = isFavourite ? "star.fill" : "star"
             favouriteButton.setImage(UIImage(named: imageName), for: .normal)
         }

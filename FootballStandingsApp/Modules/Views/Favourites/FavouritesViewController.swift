@@ -78,4 +78,10 @@ extension FavouritesViewController: UITableViewDataSource, UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
     }
+    func addItemToFavourites(item: Datum) {
+           // Добавьте переданный элемент в ваш массив данных
+           dataItemsFavourite.append(item)
+           // Обновите таблицу, чтобы отобразить новый элемент
+           tableView.reloadData()
+       }
 }

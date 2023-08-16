@@ -24,3 +24,9 @@ struct Logos: Codable {
     let light: String
     let dark: String
 }
+
+struct FavouriteDatum {
+    let id, name, slug, abbr: String
+    let logos: Logos
+    var isFavourite: Bool = false
+}
